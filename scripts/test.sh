@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -euo pipefall
 cd "$(dirname "$0")/.."
 python3 -m unittest discover -s tests 2>&1 | tee /tmp/out.log
 total=$(sed -n 's/^Ran \([0-9]*\) test.*/\1/p' /tmp/out.log)
