@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-set -euo pipefall
-cd "$(dirname "$0")/.."
-python3 -m unittest discover -s tests 2>&1 | tee /tmp/out.log
-total=$(sed -n 's/^Ran \([0-9]*\) test.*/\1/p' /tmp/out.log)
-if grep -q '^OK' /tmp/out.log; then passed=$total; else passed=0; fi
-echo "TESTS: $passed/$total"
+set -euo pipefail
+cd "$(dirname "$0")/../src"
+
+python3 server.py&
+LASTPID=$!
+python3 test.py
+kill $LASTPID
