@@ -1,5 +1,6 @@
 import requests
 import os
+import sys
 
 passedTests = 0
 amountOfTests = 3
@@ -11,7 +12,12 @@ if getRequestText("/") == "notes service":
     passedTests += 1
 if getRequestText("/healthz") == "ok":
     passedTests += 1
-if getRequestText("/notes") == "3":
+if getRequestText("/notes") == "4":
     passedTests += 1
 
 print(f"TESTS: {passedTests}/{amountOfTests}")
+
+if passedTests == amountOfTests:
+    sys.exit(0)
+else:
+    sys.exit(1)
