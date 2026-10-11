@@ -27,7 +27,7 @@ jobs:
 
       # 4. set up YOUR language - see the table below.
       #    Delete this step if you need nothing beyond what the runner has.
-      - uses: actions/setup-python@7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.x"
 
