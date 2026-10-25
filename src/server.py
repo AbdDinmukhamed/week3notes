@@ -30,4 +30,6 @@ def make_server(port):
     
 
 if __name__ == "__main__":
+    import signal, sys
+    signal.signal(signal.SIGTERM, lambda signum, frame: sys.exit(0))
     make_server(int(os.environ.get("PORT", "8080"))).serve_forever()

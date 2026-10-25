@@ -29,6 +29,8 @@ jobs:
       #    Delete this step if you need nothing beyond what the runner has.
       - uses: actions/setup-python@v7
         with:
-          python-version: "3.x"
+          python-version: "3.12"
+          cache: "pip"
 
-      - run: python -m pip install requests && bash scripts/test.sh                 # 5. the ONE command that runs your tests
+      - run: pip install -r requirements.txt 
+      - run: ./scripts/test.sh                 # 5. the ONE command that runs your tests
