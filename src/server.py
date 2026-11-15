@@ -3,12 +3,14 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 
 NOTES = ["a", "b", "c"]
 
+GREETING = os.environ.get("GREETING", "notes service")
+
 class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == "/healthz":
             self._send(200, b"ok")
         elif self.path == "/":
-            self._send(200, b"notes service")
+            self._send(200, GREETING.encode())
         elif self.path == "/notes":
             self._send(200, str(len(NOTES)).encode())
         else:
